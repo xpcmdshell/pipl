@@ -1,3 +1,6 @@
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+
+
 # Pipl (unofficial)
 This repository holds an unofficial package that can be used to interface with the Pipl search API in Golang. Some [example code](https://godoc.org/github.com/xpcmdshell/pipl#example-package) to get you started (and develop and intuition for how the package is used) can be seen on the accompanying GoDoc page.  Pull requests and bug reports are welcome.
 
@@ -8,3 +11,6 @@ This package is released under the MIT license. It comes without warranty, and I
 [Here you go.](https://godoc.org/github.com/xpcmdshell/pipl)
 
 I will add more examples and tests to the GoDoc page over time.
+
+## And how to get it?
+```go get github.com/xpcmdshell/pipl```
