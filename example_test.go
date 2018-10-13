@@ -2,10 +2,9 @@ package pipl_test
 
 import (
 	"fmt"
+	"github.com/xpcmdshell/pipl"
 	"log"
 	"os"
-
-	"github.com/xpcmdshell/pipl"
 )
 
 var ()
