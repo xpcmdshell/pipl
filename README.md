@@ -1,5 +1,5 @@
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
-
+[![Build Status](https://travis-ci.org/xpcmdshell/pipl.svg?branch=master)](https://travis-ci.org/xpcmdshell/pipl)
 
 # Pipl (unofficial)
 This repository holds an unofficial package that can be used to interface with the Pipl search API in Golang. Some [example code](https://godoc.org/github.com/xpcmdshell/pipl#example-package) to get you started (and develop and intuition for how the package is used) can be seen on the accompanying GoDoc page.  Pull requests and bug reports are welcome.
