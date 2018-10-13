@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"pipl"
+
+	"github.com/xpcmdshell/pipl"
 )
 
 var ()
