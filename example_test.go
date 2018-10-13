@@ -50,6 +50,10 @@ func Example() {
 			// to pull a full person profile by search pointer
 			searchPtr := person.SearchPointer
 			ptrResults, err := client.SearchByPointer(searchPtr)
+			if err != nil {
+				log.Println(err)
+				os.Exit(1)
+			}
 			ptrSummary, err := ptrResults.Summarize()
 			if err != nil {
 				log.Println(err)

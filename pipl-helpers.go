@@ -49,6 +49,9 @@ func (searchObject Person) Summarize() (string, error) {
 
 	if len(searchObject.Usernames) > 0 {
 		_, err = builder.WriteString("Usernames:\n")
+		if err != nil {
+			return "", err
+		}
 		for _, username := range searchObject.Usernames {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", username.Content))
 			if err != nil {
@@ -177,6 +180,9 @@ func (searchObject Person) Summarize() (string, error) {
 
 	if len(searchObject.UserIDs) > 0 {
 		_, err = builder.WriteString("User IDs:\n")
+		if err != nil {
+			return "", err
+		}
 		for _, id := range searchObject.UserIDs {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", id.Content))
 			if err != nil {
