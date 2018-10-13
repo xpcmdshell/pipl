@@ -15,7 +15,7 @@ func (err *ErrInsufficientSearch) Error() string {
 }
 
 // Summarize returns a string summary of the attributes of a person object
-func (person Person) Summarize() (string, error) {
+func (searchObject Person) Summarize() (string, error) {
 	builder := strings.Builder{}
 	_, err := builder.WriteString(fmt.Sprintf("Match Confidence: %.f%%\n", person.Match*100))
 	if err != nil {
