@@ -7,8 +7,6 @@ import (
 	"os"
 )
 
-var ()
-
 func Example() {
 	log.Println("Starting up.")
 	// Create a new client object to handle your queries (supply an API Key)
