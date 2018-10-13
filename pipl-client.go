@@ -33,7 +33,7 @@ const (
 	// ShowSourcesAll specifies that we want all source info back with our search results
 	ShowSourcesAll SourceLevel = "all"
 
-	// ShowSourcesMatching specifies that we want source info that corresponds to data that satisifes our match requirements
+	// ShowSourcesMatching specifies that we want source info that corresponds to data that satisfies our match requirements
 	ShowSourcesMatching SourceLevel = "true"
 
 	// MatchRequirementsNone specifies that we don't have any match requirements for this search

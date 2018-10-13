@@ -232,6 +232,7 @@ type URL struct {
 	URL        string `json:"url,omitempty"`
 }
 
+// Tag contains content classification information
 type Tag struct {
 	Classification string `json:"@classification,omitempty"`
 	Content        string `json:"content,omitempty"`
