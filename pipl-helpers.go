@@ -17,16 +17,16 @@ func (err *ErrInsufficientSearch) Error() string {
 // Summarize returns a string summary of the attributes of a person object
 func (searchObject Person) Summarize() (string, error) {
 	builder := strings.Builder{}
-	_, err := builder.WriteString(fmt.Sprintf("Match Confidence: %.f%%\n", person.Match*100))
+	_, err := builder.WriteString(fmt.Sprintf("Match Confidence: %.f%%\n", searchObject.Match*100))
 	if err != nil {
 		return "", err
 	}
-	if len(person.Names) > 0 {
+	if len(searchObject.Names) > 0 {
 		_, err = builder.WriteString("Names:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, name := range person.Names {
+		for _, name := range searchObject.Names {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s %s %s\n", name.First, name.Middle, name.Last))
 			if err != nil {
 				return "", err
@@ -34,12 +34,12 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.Emails) > 0 {
+	if len(searchObject.Emails) > 0 {
 		_, err = builder.WriteString("Email Addresses:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, email := range person.Emails {
+		for _, email := range searchObject.Emails {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", email.Address))
 			if err != nil {
 				return "", err
@@ -47,9 +47,9 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.Usernames) > 0 {
+	if len(searchObject.Usernames) > 0 {
 		_, err = builder.WriteString("Usernames:\n")
-		for _, username := range person.Usernames {
+		for _, username := range searchObject.Usernames {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", username.Content))
 			if err != nil {
 				return "", err
@@ -57,12 +57,12 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.Phones) > 0 {
+	if len(searchObject.Phones) > 0 {
 		_, err = builder.WriteString("Phone Numbers:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, phone := range person.Phones {
+		for _, phone := range searchObject.Phones {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", phone.Display))
 			if err != nil {
 				return "", err
@@ -70,26 +70,26 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if person.Gender != nil {
-		_, err = builder.WriteString(fmt.Sprintf("Gender:\n\t%s\n", person.Gender.Content))
+	if searchObject.Gender != nil {
+		_, err = builder.WriteString(fmt.Sprintf("Gender:\n\t%s\n", searchObject.Gender.Content))
 		if err != nil {
 			return "", err
 		}
 	}
 
-	if person.DateOfBirth != nil {
-		_, err = builder.WriteString(fmt.Sprintf("Date of Birth:\n\t%s\n", person.DateOfBirth.Display))
+	if searchObject.DateOfBirth != nil {
+		_, err = builder.WriteString(fmt.Sprintf("Date of Birth:\n\t%s\n", searchObject.DateOfBirth.Display))
 		if err != nil {
 			return "", err
 		}
 	}
 
-	if len(person.Languages) > 0 {
+	if len(searchObject.Languages) > 0 {
 		_, err = builder.WriteString("Languages:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, language := range person.Languages {
+		for _, language := range searchObject.Languages {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", language.Display))
 			if err != nil {
 				return "", err
@@ -97,12 +97,12 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.Ethnicities) > 0 {
+	if len(searchObject.Ethnicities) > 0 {
 		_, err = builder.WriteString("Ethnicities:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, ethnicity := range person.Ethnicities {
+		for _, ethnicity := range searchObject.Ethnicities {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", ethnicity.Content))
 			if err != nil {
 				return "", err
@@ -110,12 +110,12 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.OriginCountries) > 0 {
+	if len(searchObject.OriginCountries) > 0 {
 		_, err = builder.WriteString("Origin Countries:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, originCountry := range person.OriginCountries {
+		for _, originCountry := range searchObject.OriginCountries {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", originCountry.Country))
 			if err != nil {
 				return "", err
@@ -123,12 +123,12 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.Addresses) > 0 {
+	if len(searchObject.Addresses) > 0 {
 		_, err = builder.WriteString("Addresses:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, address := range person.Addresses {
+		for _, address := range searchObject.Addresses {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", address.Display))
 			if err != nil {
 				return "", err
@@ -136,12 +136,12 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.Jobs) > 0 {
+	if len(searchObject.Jobs) > 0 {
 		_, err = builder.WriteString("Jobs:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, job := range person.Jobs {
+		for _, job := range searchObject.Jobs {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", job.Display))
 			if err != nil {
 				return "", err
@@ -149,12 +149,12 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.Educations) > 0 {
+	if len(searchObject.Educations) > 0 {
 		_, err = builder.WriteString("Education:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, education := range person.Educations {
+		for _, education := range searchObject.Educations {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", education.Display))
 			if err != nil {
 				return "", err
@@ -162,12 +162,12 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.Relationships) > 0 {
+	if len(searchObject.Relationships) > 0 {
 		_, err = builder.WriteString("Relationships:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, relation := range person.Relationships {
+		for _, relation := range searchObject.Relationships {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s (%s, %s)\n", relation.Names[0].Display, relation.Type, relation.Subtype))
 			if err != nil {
 				return "", err
@@ -175,9 +175,9 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.UserIDs) > 0 {
+	if len(searchObject.UserIDs) > 0 {
 		_, err = builder.WriteString("User IDs:\n")
-		for _, id := range person.UserIDs {
+		for _, id := range searchObject.UserIDs {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", id.Content))
 			if err != nil {
 				return "", err
@@ -185,12 +185,12 @@ func (searchObject Person) Summarize() (string, error) {
 		}
 	}
 
-	if len(person.URLs) > 0 {
+	if len(searchObject.URLs) > 0 {
 		_, err = builder.WriteString("Related URLs:\n")
 		if err != nil {
 			return "", err
 		}
-		for _, url := range person.URLs {
+		for _, url := range searchObject.URLs {
 			_, err = builder.WriteString(fmt.Sprintf("\t%s\n", url.URL))
 			if err != nil {
 				return "", err
