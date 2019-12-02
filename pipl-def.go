@@ -8,13 +8,17 @@ package pipl
 // added at a later date if needed.
 type GUID string
 
-// Name fields collectively define a possible name for a given person.
-// If a search did not return information for a given field, it will be empty.
-type Name struct {
+type Validity struct {
 	ValidSince string `json:"@valid_since,omitempty"`
 	LastSeen   string `json:"@last_seen,omitempty"`
 	Current    bool   `json:"@current,omitempty"`
 	Inferred   bool   `json:"@inferred,omitempty"`
+}
+
+// Name fields collectively define a possible name for a given person.
+// If a search did not return information for a given field, it will be empty.
+type Name struct {
+	Validity
 	Type       string `json:"@type,omitempty"`
 	First      string `json:"first,omitempty"`
 	Middle     string `json:"middle,omitempty"`
@@ -28,10 +32,7 @@ type Name struct {
 // Address fields collectively define a possible address for a given person
 // If a search did not return information for a given field, it will be empty.
 type Address struct {
-	ValidSince string `json:"@valid_since,omitempty"`
-	LastSeen   string `json:"@last_seen,omitempty"`
-	Current    bool   `json:"@current,omitempty"`
-	Inferred   bool   `json:"@inferred,omitempty"`
+	Validity
 	Type       string `json:"@type,omitempty"`
 	Country    string `json:"country,omitempty"`
 	State      string `json:"state,omitempty"`
@@ -48,10 +49,7 @@ type Address struct {
 // Phone fields collectively define a possible phone number for a given person
 // If a search did not return information for a given field, it will be empty.
 type Phone struct {
-	ValidSince           string `json:"@valid_since,omitempty"`
-	LastSeen             string `json:"@last_seen,omitempty"`
-	Current              bool   `json:"@current,omitempty"`
-	Inferred             bool   `json:"@inferred,omitempty"`
+	Validity
 	Type                 string `json:"@type,omitempty"`
 	CountryCode          int    `json:"country_code,omitempty"`
 	Number               int    `json:"number,omitempty"`
@@ -64,10 +62,7 @@ type Phone struct {
 // Email fields collectively define a possible email address for a given person
 // If a search did not return information for a given field, it will be empty.
 type Email struct {
-	ValidSince    string `json:"@valid_since,omitempty"`
-	LastSeen      string `json:"@last_seen,omitempty"`
-	Current       bool   `json:"@current,omitempty"`
-	Inferred      bool   `json:"@inferred,omitempty"`
+	Validity
 	Type          string `json:"@type,omitempty"`
 	Address       string `json:"address,omitempty"`
 	AddressMD5    string `json:"address_md5,omitempty"`
@@ -78,59 +73,41 @@ type Email struct {
 // Username fields collectively define a possible username used by a given person.
 // If a search did not return information for a given field, it will be empty.
 type Username struct {
-	ValidSince string `json:"@valid_since,omitempty"`
-	LastSeen   string `json:"@last_seen,omitempty"`
-	Current    bool   `json:"@current,omitempty"`
-	Inferred   bool   `json:"@inferred,omitempty"`
+	Validity
 	Content    string `json:"content,omitempty"`
 }
 
 // UserID fields collectively define a possible UserID used by a given person.
 // If a search did not return information for a given field, it will be empty.
 type UserID struct {
-	ValidSince string `json:"@valid_since,omitempty"`
-	LastSeen   string `json:"@last_seen,omitempty"`
-	Current    bool   `json:"@current,omitempty"`
-	Inferred   bool   `json:"@inferred,omitempty"`
+	Validity
 	Content    string `json:"content,omitempty"`
 }
 
 // DateRange specifies a range of time by a start and end date
 type DateRange struct {
-	ValidSince string `json:"@valid_since,omitempty"`
-	LastSeen   string `json:"@last_seen,omitempty"`
-	Current    bool   `json:"@current,omitempty"`
-	Inferred   bool   `json:"@inferred,omitempty"`
+	Validity
 	Start      string `json:"start,omitempty"`
 	End        string `json:"end,omitempty"`
 }
 
 // DateOfBirth specififes a possible DOB for a person.
 type DateOfBirth struct {
-	ValidSince string    `json:"@valid_since,omitempty"`
-	LastSeen   string    `json:"@last_seen,omitempty"`
-	Current    bool      `json:"@current,omitempty"`
-	Inferred   bool      `json:"@inferred,omitempty"`
+	Validity
 	DateRange  DateRange `json:"date_range,omitempty"`
 	Display    string    `json:"display,omitempty"`
 }
 
 // Image specifies a link to an image closely associated with the given person.
 type Image struct {
-	ValidSince     string `json:"@valid_since,omitempty"`
-	LastSeen       string `json:"@last_seen,omitempty"`
-	Current        bool   `json:"@current,omitempty"`
-	Inferred       bool   `json:"@inferred,omitempty"`
+	Validity
 	URL            string `json:"url,omitempty"`
 	ThumbnailToken string `json:"thumbnail_token,omitempty"`
 }
 
 // Job specifies information about a possible occupation held by the given person.
 type Job struct {
-	ValidSince   string    `json:"@valid_since,omitempty"`
-	LastSeen     string    `json:"@last_seen,omitempty"`
-	Current      bool      `json:"@current,omitempty"`
-	Inferred     bool      `json:"@inferred,omitempty"`
+	Validity
 	Title        string    `json:"title,omitempty"`
 	Organization string    `json:"organization,omitempty"`
 	Industry     string    `json:"industry,omitempty"`
@@ -140,10 +117,7 @@ type Job struct {
 
 // Education specifies a possible
 type Education struct {
-	ValidSince string    `json:"@valid_since,omitempty"`
-	LastSeen   string    `json:"@last_seen,omitempty"`
-	Current    bool      `json:"@current,omitempty"`
-	Inferred   bool      `json:"@inferred,omitempty"`
+	Validity
 	Degree     string    `json:"degree,omitempty"`
 	School     string    `json:"school,omitempty"`
 	DateRange  DateRange `json:"date_range,omitempty"`
@@ -153,28 +127,19 @@ type Education struct {
 // Gender contains a  possible gender of the given person.
 // Gender is one of: "male", "female" (There is no default value for this field)
 type Gender struct {
-	ValidSince string `json:"@valid_since,omitempty"`
-	LastSeen   string `json:"@last_seen,omitempty"`
-	Current    bool   `json:"@current,omitempty"`
-	Inferred   bool   `json:"@inferred,omitempty"`
+	Validity
 	Content    string `json:"content,omitempty"`
 }
 
 // Ethnicity contains a possible ethnicity of given person.
 type Ethnicity struct {
-	ValidSince string `json:"@valid_since,omitempty"`
-	LastSeen   string `json:"@last_seen,omitempty"`
-	Current    bool   `json:"@current,omitempty"`
-	Inferred   bool   `json:"@inferred,omitempty"`
+	Validity
 	Content    string `json:"content,omitempty"`
 }
 
 // Language contains information about a possible language known by the given person.
 type Language struct {
-	ValidSince string `json:"@valid_since,omitempty"`
-	LastSeen   string `json:"@last_seen,omitempty"`
-	Current    bool   `json:"@current,omitempty"`
-	Inferred   bool   `json:"@inferred,omitempty"`
+	Validity
 	Language   string `json:"language,omitempty"`
 	Region     string `json:"region,omitempty"`
 	Display    string `json:"display,omitempty"`
@@ -183,10 +148,7 @@ type Language struct {
 // OriginCountry contains information about a possible origin country of the
 // given person.
 type OriginCountry struct {
-	ValidSince string `json:"@valid_since,omitempty"`
-	LastSeen   string `json:"@last_seen,omitempty"`
-	Current    bool   `json:"@current,omitempty"`
-	Inferred   bool   `json:"@inferred,omitempty"`
+	Validity
 	Country    string `json:"country,omitempty"`
 }
 
@@ -196,10 +158,7 @@ type OriginCountry struct {
 // the person being searched. For example, Type = "Family", Subtype = "Father".
 // Type can be one of: "work", "family", "friend" (default), "other"
 type Relationship struct {
-	ValidSince      string          `json:"@valid_since,omitempty"`
-	LastSeen        string          `json:"@last_seen,omitempty"`
-	Current         bool            `json:"@current,omitempty"`
-	Inferred        bool            `json:"@inferred,omitempty"`
+	Validity
 	Type            string          `json:"@type,omitempty"`
 	Subtype         string          `json:"@subtype,omitempty"`
 	Names           []Name          `json:"names,omitempty"`
@@ -221,10 +180,7 @@ type Relationship struct {
 
 // URL contains information about a URL that is closely associated with a given person.
 type URL struct {
-	ValidSince string `json:"@valid_since,omitempty"`
-	LastSeen   string `json:"@last_seen,omitempty"`
-	Current    bool   `json:"@current,omitempty"`
-	Inferred   bool   `json:"@inferred,omitempty"`
+	Validity
 	SourceID   string `json:"@source_id,omitempty"`
 	Domain     string `json:"@domain,omitempty"`
 	Name       string `json:"@name,omitempty"`
