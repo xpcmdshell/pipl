@@ -51,22 +51,18 @@ func Example() {
 				log.Println(err)
 				os.Exit(1)
 			}
-			ptrSummary, err := ptrResults.Summarize()
-			if err != nil {
-				log.Println(err)
-				os.Exit(1)
+			for _, addr := range ptrResults.Addresses {
+				// Print out addresses associated with search target, for the sake of example.
+				fmt.Println(addr)
 			}
-			fmt.Println(ptrSummary)
 		}
 	} else if results.PersonsCount == 1 {
 		// When a single result is returned from our search, we get a full
 		// profile by default (100% match confidence)
-		personSummary, err := results.Person.Summarize()
-		if err != nil {
-			log.Println(err)
-			os.Exit(1)
+		for _, addr := range results.Person.Addresses {
+			// Print out addresses associated with search target, for the sake of example.
+			fmt.Println(addr)
 		}
-		fmt.Println(personSummary)
 	} else {
 		fmt.Println("No results!")
 	}
